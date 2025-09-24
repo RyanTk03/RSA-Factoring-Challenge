@@ -5,9 +5,9 @@
  *
  * @n: the number to factorize.
  */
-void factorize(long n)
+void factorize(unsigned long long n)
 {
-	long p = 2;
+	unsigned long long p = 2;
 
 	while (p <= n / 2 && n % p != 0)
 	{
@@ -16,7 +16,11 @@ void factorize(long n)
 
 	if (n % p == 0)
 	{
-		printf("%ld=%ld*%ld\n", n, n / p, p);
+		printf("%llu=%llu*%llu\n", n, n / p, p);
+	}
+	else
+	{
+		printf("%llu=%llu*1\n", n, n);
 	}
 
 }
@@ -32,7 +36,7 @@ void factorize(long n)
  */
 int main(int argc, char **argv)
 {
-	long n = 0;
+	unsigned long long n = 0;
 	FILE *f = NULL;
 
 	if (argc < 2)
@@ -48,7 +52,7 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
-	while (fscanf(f, "%ld\n", &n) != EOF)
+	while (fscanf(f, "%llu\n", &n) == 1)
 	{
 		factorize(n);
 	}
